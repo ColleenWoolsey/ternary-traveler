@@ -2,7 +2,7 @@ const FetchCalls = {
     
     getAllInterests() {
       return fetch("http://localhost:8088/interests")
-          .then(response => response.json())
+      .then(response => response.json())
         },
       
         postNewInterest(newInterestToSave) {
@@ -15,13 +15,13 @@ const FetchCalls = {
           })
         },
             
-        getInterest(id) {
-          return fetch(`http://localhost:8088/tasks/${id}`)
+        getInterest(interestId) {
+          return fetch(`http://localhost:8088/interests/${interestId}`)
           .then(response => response.json())
         },
     
         putExistingTask(interestId, interestToEdit) {
-          return fetch(`http://localhost:8088/tasks/${interestId}`, {
+          return fetch(`http://localhost:8088/interests/${interestId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

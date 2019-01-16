@@ -65,7 +65,7 @@ const DomBuilder = {
 
     let interestCityLabel = document.createElement("label");
     interestCityLabel.textContent = "Select a City:  ";
-    interestCityLabel.setAttribute("for", "interestCityInput");
+    interestCityLabel.setAttribute("for", "interestCitySelect");
 
     let interestCitySelect = document.createElement("select");
     interestCitySelect.setAttribute("id", "interest_city");
@@ -107,7 +107,7 @@ const DomBuilder = {
     interestFormArticle.appendChild(interestFormFragment);
 
     console.log(interestFormArticle);
-    //List.createDomList();
+    List.createDomList();
   },
     
   clearTaskDom() {
@@ -115,8 +115,8 @@ const DomBuilder = {
     let clearHtmlDiv = document.querySelector("#pageDiv");
     let clearHtmlSection = document.querySelector("#clearSection");
     clearHtmlSection.innerHTML = `
-        <article id="tasksOutput"></article>
-        <article id="taskListOutput"></article>`;
+        <article id="formOutput"></article>
+        <article id="listOutput"></article>`;
     clearHtmlDiv.appendChild(clearHtmlSection);
     },
   

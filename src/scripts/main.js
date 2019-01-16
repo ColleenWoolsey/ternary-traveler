@@ -1,4 +1,3 @@
 import DomBuilder from "./Dombuilder"
-import List from "./List"
+//import List from "./List"
 DomBuilder.createAndAppendForm();
-List.createDomList();
