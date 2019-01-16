@@ -1,7 +1,7 @@
 const FetchCalls = {
     
     getAllInterests() {
-      return fetch("http://localhost:8088/interests?_expand=places")
+      return fetch("http://localhost:8088/interests")
           .then(response => response.json())
         },
       

@@ -1,5 +1,5 @@
 import FetchCalls from "./FetchCalls"
-//import List from "./List"
+import List from "./List"
 
 
 const DomBuilder = { 
@@ -107,7 +107,7 @@ const DomBuilder = {
     interestFormArticle.appendChild(interestFormFragment);
 
     console.log(interestFormArticle);
-    // List.createDomList();
+    //List.createDomList();
   },
     
   clearTaskDom() {
@@ -141,10 +141,14 @@ const DomBuilder = {
       reviewInterest: intReviewInput,
       placeId: intPlaceInput
     }
+
+    console.log("newInterest Object")
+    console.log(newInterest)
+
     FetchCalls.postNewInterest(newInterest)
     .then(response => {
         console.log("You have fetched")
-        //List.createDomList()
+        List.createDomList()
     })
 },
 }
