@@ -20,7 +20,7 @@ createAndAppendForm() {
       console.log(allPlaces);
       allPlaces.forEach(placeItem => {
         let selectOption = document.createElement("option");
-        selectOption.setAttribute("label", placeItem.nameCountry);
+        selectOption.setAttribute("label", placeItem.nameCity);
         selectOption.setAttribute("value", placeItem.id);
         interestCitySelect.appendChild(selectOption);
           console.log(selectOption);

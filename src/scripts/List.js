@@ -7,7 +7,7 @@ const List = {
    console.log("Hello from List.createDomList")
     FetchCalls.getAllInterestsAndPlaces()
     .then(allInterests => {
-      console.log(allInterests);
+      console.table(allInterests);
       let interestDocFragment = document.createDocumentFragment()
       allInterests.forEach(interestItem => {
           let interestHtml = CreateObject.interestBuilder(interestItem)

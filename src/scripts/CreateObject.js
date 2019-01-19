@@ -6,9 +6,10 @@ const CreateObject = {
   
    interestBuilder(interestItem) {
 
-    let interestArticle = document.createElement("article")
-    interestArticle.setAttribute("id", `task--${interestItem.id}`)
-    interestArticle.setAttribute("class", "listItemContainer")
+    let interestArticle = document.createElement("article");
+    interestArticle.setAttribute("id", `interest--${interestItem.id}`);
+    interestArticle.setAttribute("class", "listItemContainer");
+    console.log(interestArticle);
 
     let editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
@@ -35,28 +36,27 @@ const CreateObject = {
         //EditForm.createAndAppendForm(articleId, response)
       })
     })
-
+    let vplaceName = document.createElement("p");
+    vplaceName.textContent = interestItem.place.nameCity;
+    console.log("PlaceName" + vplaceName);
     let vnameInterest = document.createElement("p");
-    vnameInterest = interestItem.nameInterest;
-    let vdescriptionInterest = document.createElement("p");
-    vdescriptionInterest = interestItem.descriptionInterest;
+    vnameInterest.textContent = interestItem.nameInterest;
+    let vdescriptionInterest = document.createElement("textarea");
+    vdescriptionInterest.textContent = interestItem.descriptionInterest;
     let vcostInterest = document.createElement("p");
-    vcostInterest = interestItem.costInterest;
+    vcostInterest.textContent = interestItem.costInterest;
+    let vreview = document.createElement("textarea");
+    vreview.textContent = interestItem.reviewInterest;
+    
 
     // {
-    //   "id": 1,
+    // "id": 1,
     // "placeId": 1,
-    // "name": "Local Market",
-    // "description": "Local market where you can try purchase local products and try the local food",
-    // "cost": 0.00,
-    // "review": "You can definitely get things for a lower price if you are willing to bargain!"
+    // "nameInterest": "Local Market",
+    // "descriptionInterest": "Local market where you can try purchase local products and try the local food",
+    // "costInterest": 0.00,
+    // "reviewInterest": "You can definitely get things for a lower price if you are willing to bargain!"
     // }
-
-    // "nameInterest": "Interest Nine",
-    // "descriptionInterest": "Description of Interest Nine",
-    // "costInterest": 10,
-    // "reviewInterest": "",
-    // "placeId": 2
     
     // FetchCalls.putExistingInterest(interestId, interestToEdit)
     //   .then(response => {
@@ -67,11 +67,15 @@ const CreateObject = {
   interestArticle.appendChild(editBtn);
   interestArticle.appendChild(delBtn);
   interestArticle.appendChild(vnameInterest);
+  interestArticle.appendChild(vplaceName)
   interestArticle.appendChild(vdescriptionInterest);
   interestArticle.appendChild(vcostInterest);
+  if (vreview !== "") {
+    interestArticle.appendChild(vreview);
+  }
 
   return interestArticle;
-   }   
-  }
+  }   
+}
 
   export default CreateObject
