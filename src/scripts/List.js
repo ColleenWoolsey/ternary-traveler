@@ -1,11 +1,9 @@
 import FetchCalls from "./FetchCalls"
 import CreateObject from "./CreateObject"
-//import DomBuilder from "./DomBuilder"
 
 const List = {
   createDomList() {
    console.log("Hello from List.createDomList")
-   
    FetchCalls.getPlaces()
     .then(allPlaces => {
       console.log(allPlaces);
@@ -14,10 +12,13 @@ const List = {
         // fetch list for just that city
         let cityHeader = document.createElement("h2");
         cityHeader.innerHTML = placeItem.nameCity.value;
-        console.log("cityHeader: " + cityHeader);
-
-        let cityId = placeItem.id;         
-
+        console.log("cityHeader: " + cityHeader.innerHTML);
+        // let cityId = document.createElement("article")
+        // cityId.innerHTML = `${placeItem.id.toString()}`;
+        // console.log("cityId: " + cityId);
+        // let cityArticle = document.createElement("article");
+        // cityArticle.setAttribute("class", `${cityId}`)
+        let cityId = placeItem.id;
         FetchCalls.getInterests(cityId)
         .then(allInterests => {
           console.log(allInterests);
@@ -27,8 +28,7 @@ const List = {
             interestDocFragment.appendChild(interestHtml);
             console.log(interestDocFragment);
           })
-        
-      let outputArticle = document.querySelector("#listOutput")
+          let outputArticle = document.querySelector("#listOutput")
       outputArticle.setAttribute("class", "editContainer")
 
       //This while loop essentially removes all child nodes of an element
@@ -43,7 +43,6 @@ const List = {
       }
       outputArticle.appendChild(cityHeader)
       outputArticle.appendChild(interestDocFragment)
-      
     })
    })
   })
