@@ -5,8 +5,9 @@ import CreateObject from "./CreateObject"
 const List = {
   createDomList() {
    console.log("Hello from List.createDomList")
-    FetchCalls.getAllInterests()
+    FetchCalls.getAllInterestsAndPlaces()
     .then(allInterests => {
+      console.log(allInterests);
       let interestDocFragment = document.createDocumentFragment()
       allInterests.forEach(interestItem => {
           let interestHtml = CreateObject.interestBuilder(interestItem)

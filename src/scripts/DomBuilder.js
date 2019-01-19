@@ -2,10 +2,32 @@ import FetchCalls from "./FetchCalls"
 import List from "./List"
 
 
-const DomBuilder = { 
-    
-  createAndAppendForm() {
-    console.log("Hello from Dombuilder.createAndAppendForm")
+const DomBuilder = {
+// DROPDOWN FOR CITY
+createAndAppendForm() {
+    console.log("Hello from Dombuilder.createAndAppendForm");
+    let interestCityField = document.createElement("fieldset");
+      interestCityField.setAttribute("class", "cityStyling");
+      let interestCityLabel = document.createElement("label");
+      interestCityLabel.textContent = "Select a City:  ";
+      interestCityLabel.setAttribute("for", "interestCitySelect");
+      let interestCitySelect = document.createElement("select");
+      interestCitySelect.setAttribute("id", "interest_city");
+      interestCityField.appendChild(interestCityLabel);
+
+    FetchCalls.getPlaces()
+    .then(allPlaces => {
+      console.log(allPlaces);
+      allPlaces.forEach(placeItem => {
+        let selectOption = document.createElement("option");
+        selectOption.setAttribute("label", placeItem.nameCountry);
+        selectOption.setAttribute("value", placeItem.id);
+        interestCitySelect.appendChild(selectOption);
+          console.log(selectOption);
+      })
+      interestCityField.appendChild(interestCitySelect);
+    })
+
 // MAIN HEADER
     let formHeader = document.createElement("h1");
     formHeader.textContent = "The Ternary Traveler";
@@ -26,8 +48,6 @@ const DomBuilder = {
 
     let interestNameInput = document.createElement("input");
     interestNameInput.setAttribute("id", "interest_name");
-    
-    interestNameField.appendChild(interestNameLabel);
     interestNameField.appendChild(interestNameInput);
 
 // DESCRIPTION OF INTEREST
@@ -59,31 +79,6 @@ const DomBuilder = {
     interestCostField.appendChild(interestCostLabel);
     interestCostField.appendChild(interestCostInput);
 
-// DROPDOWN FOR CITY
-    let interestCityField = document.createElement("fieldset");
-    interestCityField.setAttribute("class", "cityStyling");
-
-    let interestCityLabel = document.createElement("label");
-    interestCityLabel.textContent = "Select a City:  ";
-    interestCityLabel.setAttribute("for", "interestCitySelect");
-
-    let interestCitySelect = document.createElement("select");
-    interestCitySelect.setAttribute("id", "interest_city");
-
-    let selectOptionOne = document.createElement("option");
-    selectOptionOne.setAttribute("value", "Hong Kong")
-    let selectOptionTwo = document.createElement("option");
-    selectOptionTwo.setAttribute("value", "Tokyo");
-    let selectOptionThree = document.createElement("option");
-    selectOptionThree.setAttribute("value", "Shanghai");
-    interestCitySelect.appendChild(selectOptionOne);
-    interestCitySelect.appendChild(selectOptionTwo);
-    interestCitySelect.appendChild(selectOptionThree);
-
-    interestCityField.appendChild(interestCityLabel);
-    interestCityField.appendChild(interestCitySelect);
-
-// 
 // SUBMIT BUTTON
     let submitButton = document.createElement("button");
     submitButton.textContent = "Add Point of Interest";
@@ -108,8 +103,7 @@ const DomBuilder = {
 
     console.log(interestFormArticle);
     List.createDomList();
-  },
-    
+},
   clearTaskDom() {
     console.log("Hello from TasksDomBuilder.clearDom");
     let clearHtmlDiv = document.querySelector("#pageDiv");
@@ -119,8 +113,7 @@ const DomBuilder = {
         <article id="listOutput"></article>`;
     clearHtmlDiv.appendChild(clearHtmlSection);
     },
-  
-  handleAddNewInterest() {
+    handleAddNewInterest() {
 // "id": 9,
 // "nameInterest": "Interest Nine",
 // "descriptionInterest": "Description of Interest Nine",
@@ -133,7 +126,6 @@ const DomBuilder = {
     let intCostInput = document.querySelector ("#interest_cost").value;
     let intReviewInput = "";
     let intPlaceInput = document.querySelector("#interest_city").value;
-    
     let newInterest = {
       nameInterest: intNameInput,
       descriptionInterest: intDescInput,

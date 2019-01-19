@@ -4,7 +4,7 @@ import List from "./List"
 
 const CreateObject = {
   
-   taskBuilder(interestItem) {
+   interestBuilder(interestItem) {
 
     let interestArticle = document.createElement("article")
     interestArticle.setAttribute("id", `task--${interestItem.id}`)
@@ -43,13 +43,22 @@ const CreateObject = {
     let vcostInterest = document.createElement("p");
     vcostInterest = interestItem.costInterest;
 
+    // {
+    //   "id": 1,
+    // "placeId": 1,
+    // "name": "Local Market",
+    // "description": "Local market where you can try purchase local products and try the local food",
+    // "cost": 0.00,
+    // "review": "You can definitely get things for a lower price if you are willing to bargain!"
+    // }
+
     // "nameInterest": "Interest Nine",
     // "descriptionInterest": "Description of Interest Nine",
     // "costInterest": 10,
     // "reviewInterest": "",
     // "placeId": 2
     
-    // Fetch.putExistingInterest(interestId, interestToEdit)
+    // FetchCalls.putExistingInterest(interestId, interestToEdit)
     //   .then(response => {
     //   List.createDomList()
     //   })
