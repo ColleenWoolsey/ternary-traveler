@@ -1,0 +1,76 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    justify-content: space-around;
+}
+
+.listItemContainer {
+    border: 2px solid black;
+}
+
+.headerH1 {
+    display: flex;
+    justify-content: center;
+}
+
+.editContainer {
+    border: #FF3B3F;
+}
+
+.containerFieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameStyling {
+    background-color: #FF3B3F;
+    display: flex;
+    flex-direction: column;
+}
+
+.descStyling {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+}
+
+.costStyling {
+    background-color:  #EFEFEF;
+    display: flex;
+    flex-direction: column;
+}
+
+.cityStyling {
+    background-color: #CAEBF2;
+    display: flex;
+    flex-direction: column;
+}
+
+.addBtnStyling {
+    background-color: #A9A9A9;
+    color: white;
+}
+
+.label {
+    margin-right: 15px;
+    line-height: 32px;
+  }
+  
+.input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+  
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 2px;
+  
+    position: relative;
+    top: 4px;
+  }

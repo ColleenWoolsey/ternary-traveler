@@ -33,10 +33,10 @@ createAndAppendForm() {
     formHeader.textContent = "The Ternary Traveler";
     formHeader.setAttribute("class", "headerH1");
 
-// ADD TASKS HEADER
-    let addHeader = document.createElement("h3");
-    addHeader.textContent = "Points of Interest";
-    addHeader.setAttribute("class", "headerH3");
+// ADD SECONDARY HEADER
+    // let addHeader = document.createElement("h3");
+    // addHeader.textContent = "Points of Interest";
+    // addHeader.setAttribute("class", "headerH3");
 
 // NAME OF INTEREST
     let interestNameField = document.createElement("fieldset");
@@ -45,6 +45,7 @@ createAndAppendForm() {
     let interestNameLabel = document.createElement("label");
     interestNameLabel.textContent = "Name:  ";
     interestNameLabel.setAttribute("for", "interestNameInput");
+    interestNameField.appendChild(interestNameLabel);
 
     let interestNameInput = document.createElement("input");
     interestNameInput.setAttribute("id", "interest_name");
@@ -52,7 +53,7 @@ createAndAppendForm() {
 
 // DESCRIPTION OF INTEREST
     let interestDescField = document.createElement("fieldset");
-    interestDescField.setAttribute("class", "desStyling");
+    interestDescField.setAttribute("class", "descStyling");
 
     let interestDescLabel = document.createElement("label");
     interestDescLabel.textContent = "Description:  ";
@@ -82,7 +83,7 @@ createAndAppendForm() {
 // SUBMIT BUTTON
     let submitButton = document.createElement("button");
     submitButton.textContent = "Add Point of Interest";
-    submitButton.setAttribute("class", "btnStyling");
+    submitButton.setAttribute("class", "addBtnStyling");
     submitButton.setAttribute("id", "interest__save");
     // 2. Attach event listener to button in form
     submitButton.addEventListener("click", this.handleAddNewInterest);
@@ -90,7 +91,7 @@ createAndAppendForm() {
 // 3. Append the HTML form to the DOM
     let interestFormFragment = document.createDocumentFragment();
     interestFormFragment.appendChild(formHeader);
-    interestFormFragment.appendChild(addHeader);
+    // interestFormFragment.appendChild(addHeader);
     interestFormFragment.appendChild(interestNameField);
     interestFormFragment.appendChild(interestDescField);
     interestFormFragment.appendChild(interestCostField);

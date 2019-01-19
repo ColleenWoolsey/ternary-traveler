@@ -5,16 +5,26 @@ import CreateObject from "./CreateObject"
 const List = {
   createDomList() {
    console.log("Hello from List.createDomList")
-    FetchCalls.getAllInterestsAndPlaces()
-    .then(allInterests => {
-      console.table(allInterests);
-      let interestDocFragment = document.createDocumentFragment()
-      allInterests.forEach(interestItem => {
+   
+   FetchCalls.getPlaces()
+    .then(allPlaces => {
+      console.log(allPlaces);
+      allPlaces.forEach(placeItem => {
+        // fetch list for just that city
+        let cityHeader = document.createElement("h2");
+        cityHeader.setAttribute("value", placeItem.nameCity);
+        console.log(cityHeader);
+        let cityId = placeItem.id;         
+
+        FetchCalls.getInterests(cityId)
+        .then(allInterests => {
+          console.log(allInterests)
+          let interestDocFragment = document.createDocumentFragment()
+          allInterests.forEach(interestItem => {
           let interestHtml = CreateObject.interestBuilder(interestItem)
           interestDocFragment.appendChild(interestHtml)
-          console.log(interestDocFragment)
-        })
-
+          })
+        
       let outputArticle = document.querySelector("#listOutput")
       outputArticle.setAttribute("class", "editContainer")
 
@@ -30,6 +40,9 @@ const List = {
       }
       outputArticle.appendChild(interestDocFragment)
     })
+   })
+  })
   }
 }
+
 export default List
