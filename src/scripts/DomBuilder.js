@@ -6,14 +6,69 @@ const DomBuilder = {
 // DROPDOWN FOR CITY
 createAndAppendForm() {
     console.log("Hello from Dombuilder.createAndAppendForm");
+    // NAVBAR
+    let navBarContainer = document.querySelector("#navOutput");
+    let navBar = document.createElement("nav");
+    navBar.setAttribute("id", "navBar");
+    let navUl = document.createElement("ul");
+    navUl.setAttribute("class", "ulClass");
+
+    let li1 = document.createElement("li");
+    li1.setAttribute("class", "liOne");
+    li1.setAttribute("id", "li--1");
+    let linkOne = document.createElement("a");
+    linkOne.setAttribute("href", "#");
+    linkOne.textContent = "The Ternary Traveler";
+    li1.appendChild(linkOne);
+    // li1.addEventListener("click", () => {
+    // 	console.log("I'm in NavBar")
+    // })
+    let li2 = document.createElement("li");
+    li2.setAttribute("class", "liTwo");
+    li2.setAttribute("id", "li--2");
+    let linkTwo = document.createElement("a");
+    linkTwo.setAttribute("href", "#");
+    linkTwo.textContent = "Hong Kong";
+    li2.appendChild(linkTwo);
+    // li2.addEventListener("click", () => {
+    // 	console.log("I'm in NavBar")
+    // })
+    let li3 = document.createElement("li");
+    li3.setAttribute("class", "liThree");
+    li3.setAttribute("id", "li--3");
+    let linkThree = document.createElement("a");
+    linkThree.setAttribute("href", "#");
+    linkThree.textContent = "Tokyo";
+    li3.appendChild(linkThree);
+    // li3.addEventListener("click", () => {
+    // 	console.log("I'm in NavBar")
+    // })
+    let li4 = document.createElement("li");
+    li4.setAttribute("class", "liFour");
+    li4.setAttribute("id", "li--4");
+    let linkFour = document.createElement("a");
+    linkFour.setAttribute("href", "#");
+    linkFour.textContent = "Shanghai";
+    li4.appendChild(linkFour);
+    // li4.addEventListener("click", () => {
+    // 	console.log("I'm in NavBar")
+    // })
+    navUl.appendChild(li1);
+    navUl.appendChild(li2);
+    navUl.appendChild(li3);
+    navUl.appendChild(li4);
+
+    navBar.appendChild(navUl);
+    navBarContainer.appendChild(navBar);
+//CREATING SELECT DROPDOWN FOR CHOOSING CITY
     let interestCityField = document.createElement("fieldset");
-      interestCityField.setAttribute("class", "cityStyling");
-      let interestCityLabel = document.createElement("label");
-      interestCityLabel.textContent = "Select a City:  ";
-      interestCityLabel.setAttribute("for", "interestCitySelect");
-      let interestCitySelect = document.createElement("select");
-      interestCitySelect.setAttribute("id", "interest_city");
-      interestCityField.appendChild(interestCityLabel);
+    interestCityField.setAttribute("class", "cityStyling");
+    let interestCityLabel = document.createElement("label");
+    interestCityLabel.textContent = "Select a City:  ";
+    interestCityLabel.setAttribute("for", "interestCitySelect");
+    let interestCitySelect = document.createElement("select");
+    interestCitySelect.setAttribute("id", "interest_city");
+    interestCityField.appendChild(interestCityLabel);
 
     FetchCalls.getPlaces()
     .then(allPlaces => {
@@ -27,12 +82,6 @@ createAndAppendForm() {
       })
       interestCityField.appendChild(interestCitySelect);
     })
-
-// MAIN HEADER
-    let formHeader = document.createElement("h1");
-    formHeader.textContent = "The Ternary Traveler";
-    formHeader.setAttribute("class", "headerH1");
-
 // ADD SECONDARY HEADER
     // let addHeader = document.createElement("h3");
     // addHeader.textContent = "Points of Interest";
@@ -90,7 +139,7 @@ createAndAppendForm() {
 
 // 3. Append the HTML form to the DOM
     let interestFormFragment = document.createDocumentFragment();
-    interestFormFragment.appendChild(formHeader);
+    // interestFormFragment.appendChild(formHeader);
     // interestFormFragment.appendChild(addHeader);
     interestFormFragment.appendChild(interestNameField);
     interestFormFragment.appendChild(interestDescField);
@@ -98,8 +147,8 @@ createAndAppendForm() {
     interestFormFragment.appendChild(interestCityField);
     interestFormFragment.appendChild(submitButton);
 
-    let interestFormArticle = document.querySelector("#formOutput");
-    interestFormArticle.setAttribute("class", "formContainer");
+    let interestFormArticle = document.querySelector("#li--1");
+    interestFormArticle.setAttribute("class", "liOne");
     interestFormArticle.appendChild(interestFormFragment);
 
     console.log(interestFormArticle);

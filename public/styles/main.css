@@ -1,21 +1,17 @@
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid black;
-    justify-content: space-around;
-}
-
 .listItemContainer {
     border: 2px solid black;
 }
 
-.headerH1 {
+.ulClass {
+    border: 3px solid black;
+    background-color: #CAEBF2;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    padding: 15px;
 }
 
 .editContainer {
-    border: #FF3B3F;
+    border: 2px solid #FF3B3F;
 }
 
 .containerFieldset {
@@ -56,8 +52,49 @@
     margin-right: 15px;
     line-height: 32px;
   }
+
+a {
+  display: block;
+  padding: 10px 40px;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  color: fade(white, 80%);
+  text-align: center;
+}
+
+li a:hover{
+      color: white;
+  }
+
+.active {
+  background-color: #F7F4E9;
+}
+
+.liOne {
+  background-color: #EFEFEF;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  justify-content: space-around;
+}
+
+.liTwo {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.liThree {
+  background-color: #EFEFEF;
+  border: 1px solid black;
+}
+
+.liFour {
+  background-color: lightgrey;
+  border: 1px solid black;
+}
   
-.input {
+/* .input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -73,4 +110,4 @@
   
     position: relative;
     top: 4px;
-  }
+  } */
