@@ -9,20 +9,23 @@ const List = {
    FetchCalls.getPlaces()
     .then(allPlaces => {
       console.log(allPlaces);
+
       allPlaces.forEach(placeItem => {
         // fetch list for just that city
         let cityHeader = document.createElement("h2");
-        cityHeader.setAttribute("value", placeItem.nameCity);
-        console.log(cityHeader);
+        cityHeader.innerHTML = placeItem.nameCity.value;
+        console.log("cityHeader: " + cityHeader);
+
         let cityId = placeItem.id;         
 
         FetchCalls.getInterests(cityId)
         .then(allInterests => {
-          console.log(allInterests)
-          let interestDocFragment = document.createDocumentFragment()
+          console.log(allInterests);
+          let interestDocFragment = document.createDocumentFragment();
           allInterests.forEach(interestItem => {
-          let interestHtml = CreateObject.interestBuilder(interestItem)
-          interestDocFragment.appendChild(interestHtml)
+            let interestHtml = CreateObject.interestBuilder(interestItem);
+            interestDocFragment.appendChild(interestHtml);
+            console.log(interestDocFragment);
           })
         
       let outputArticle = document.querySelector("#listOutput")
@@ -38,7 +41,9 @@ const List = {
       while (outputArticle.firstChild) {
         outputArticle.removeChild(outputArticle.firstChild);
       }
+      outputArticle.appendChild(cityHeader)
       outputArticle.appendChild(interestDocFragment)
+      
     })
    })
   })

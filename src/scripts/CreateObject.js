@@ -34,8 +34,6 @@ const CreateObject = {
         //EditForm.createAndAppendForm(articleId, response)
       })
     })
-    let vplaceName = document.createElement("h2");
-    vplaceName.textContent = interestItem.place.nameCity;
     let vnameInterest = document.createElement("p");
     vnameInterest.textContent = interestItem.nameInterest;
     let vdescriptionInterest = document.createElement("textarea");
@@ -56,7 +54,6 @@ const CreateObject = {
     //   .then(response => {
     //   List.createDomList()
     //   })
-  interestArticle.appendChild(vplaceName);
   interestArticle.appendChild(vnameInterest);
   interestArticle.appendChild(vdescriptionInterest);
   interestArticle.appendChild(vcostInterest);
