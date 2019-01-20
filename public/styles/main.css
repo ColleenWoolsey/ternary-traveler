@@ -1,28 +1,49 @@
-.listItemContainer {
-    border: 2px solid black;
-}
-
-.ulClass {
-    border: 3px solid black;
-    background-color: #CAEBF2;
+.pageDiv {
     display: flex;
-    flex-direction: row;
-    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 .editContainer {
-    border: 2px solid #FF3B3F;
+    text-align: center;
+    border: 15px dotted #CAEBF2;
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+#listContainer {
+    text-align: center;
+    list-style-type: none;
+    border: 1px solid black;
+    background-color: darkgrey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+#crudContainer {
+    
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    border: 2px solid black;
+    padding: 10px;
 }
 
 .containerFieldset {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
 .nameStyling {
     background-color: #FF3B3F;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .descStyling {
@@ -30,6 +51,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.descInput {}
 
 .costStyling {
     background-color:  #EFEFEF;
@@ -43,71 +66,71 @@
     flex-direction: column;
 }
 
-.addBtnStyling {
+.btnStyling {
     background-color: #A9A9A9;
     color: white;
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .label {
-    margin-right: 15px;
-    line-height: 32px;
+    text-align: left;
+    margin-left: 10px;
   }
 
-a {
-  display: block;
-  padding: 10px 40px;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative;
-  color: fade(white, 80%);
-  text-align: center;
+.header {
+    text-align: center;
+    background-color: #CAEBF2;
+    padding: 10px;
+    margin: 0px;
 }
-
-li a:hover{
-      color: white;
-  }
-
-.active {
-  background-color: #F7F4E9;
+/* THE LI CONTAINERS STYLE THE 3 CITY CONTAINERS */
+#articleId--1 {
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    flex-basis: 33%;
+    margin: 1px;
 }
-
-.liOne {
-  background-color: #EFEFEF;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  justify-content: space-around;
-}
-
-.liTwo {
-  background-color: white;
+#articleId--2 {
+  background-color: lightgray;
   border: 1px solid black;
+  flex-basis: 33%;
+  margin: 1px;
 }
 
-.liThree {
+#articleId--3 {
   background-color: #EFEFEF;
   border: 1px solid black;
+  flex-basis: 33%;
 }
 
-.liFour {
-  background-color: lightgrey;
-  border: 1px solid black;
+.listItemContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    flex-basis: 20%;
 }
-  
-/* .input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-  
-    border: 2px solid #999;
-    transition: 0.2s all linear;
-    outline: none;
-    margin-right: 2px;
-  
-    position: relative;
-    top: 4px;
-  } */
+
+.vnameInterestHeader {
+    background-color: #FF3B3F;
+    font-size: 1.25ps;
+    font-weight: 600;
+    color: white;
+    padding: 10px;
+    margin: 0;
+}
+
+.costList {
+    margin: 0;
+    margin-top: 5px;
+}
+
+.reviewLabel {
+    margin: 3px;
+}
