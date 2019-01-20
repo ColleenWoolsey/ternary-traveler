@@ -4,12 +4,12 @@ import FetchCalls from "./FetchCalls"
 const CreateObject = {
   interestBuilder(interestItem) {
 
-    let interestArticle = document.createElement("article");
+    let interestArticle = document.createElement("ul");
     interestArticle.setAttribute("id", `interest--${interestItem.id}`);
     interestArticle.setAttribute("class", "listItemContainer");
-    console.log(interestArticle);
 
     let editBtn = document.createElement("button");
+    editBtn.setAttribute("class", "btnStyling");
     editBtn.textContent = "Edit";
 
     editBtn.addEventListener("click", () => {
@@ -23,6 +23,7 @@ const CreateObject = {
     })
 
     let delBtn = document.createElement("button");
+    delBtn.setAttribute("class", "btnStyling");
     delBtn.textContent = "Delete";
 
     delBtn.addEventListener("click", () => {
@@ -36,9 +37,15 @@ const CreateObject = {
     })
     let vnameInterest = document.createElement("p");
     vnameInterest.textContent = interestItem.nameInterest;
+    vnameInterest.setAttribute("class", "vnameInterestHeader");
+    let vnameCity = document.createElement("p");
+    vnameCity.setAttribute("class", "header");
+    vnameCity.textContent = interestItem.place.nameCity;
+    console.log(vnameCity);
     let vdescriptionInterest = document.createElement("textarea");
     vdescriptionInterest.textContent = interestItem.descriptionInterest;
     let vcostInterest = document.createElement("p");
+    vcostInterest.setAttribute("class", "costList");
     vcostInterest.innerHTML = `Cost : ${interestItem.costInterest}`;
     let vreview = document.createElement("textarea");
     vreview.textContent = interestItem.reviewInterest;
@@ -54,6 +61,7 @@ const CreateObject = {
     //   .then(response => {
     //   List.createDomList()
     //   })
+  interestArticle.appendChild(vnameCity);
   interestArticle.appendChild(vnameInterest);
   interestArticle.appendChild(vdescriptionInterest);
   interestArticle.appendChild(vcostInterest);

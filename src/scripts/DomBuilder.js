@@ -4,71 +4,28 @@ import List from "./List"
 
 const DomBuilder = {
 // DROPDOWN FOR CITY
-createAndAppendForm() {
+createAndAppendCrud() {
     console.log("Hello from Dombuilder.createAndAppendForm");
-    // NAVBAR
-    let navBarContainer = document.querySelector("#navOutput");
-    let navBar = document.createElement("nav");
-    navBar.setAttribute("id", "navBar");
-    let navUl = document.createElement("ul");
-    navUl.setAttribute("class", "ulClass");
 
-    let li1 = document.createElement("li");
-    li1.setAttribute("class", "liOne");
-    li1.setAttribute("id", "li--1");
-    let linkOne = document.createElement("a");
-    linkOne.setAttribute("href", "#");
-    linkOne.textContent = "The Ternary Traveler";
-    li1.appendChild(linkOne);
-    // li1.addEventListener("click", () => {
-    // 	console.log("I'm in NavBar")
-    // })
-    let li2 = document.createElement("li");
-    li2.setAttribute("class", "liTwo");
-    li2.setAttribute("id", "li--2");
-    let linkTwo = document.createElement("a");
-    linkTwo.setAttribute("href", "#");
-    linkTwo.textContent = "Hong Kong";
-    li2.appendChild(linkTwo);
-    // li2.addEventListener("click", () => {
-    // 	console.log("I'm in NavBar")
-    // })
-    let li3 = document.createElement("li");
-    li3.setAttribute("class", "liThree");
-    li3.setAttribute("id", "li--3");
-    let linkThree = document.createElement("a");
-    linkThree.setAttribute("href", "#");
-    linkThree.textContent = "Tokyo";
-    li3.appendChild(linkThree);
-    // li3.addEventListener("click", () => {
-    // 	console.log("I'm in NavBar")
-    // })
-    let li4 = document.createElement("li");
-    li4.setAttribute("class", "liFour");
-    li4.setAttribute("id", "li--4");
-    let linkFour = document.createElement("a");
-    linkFour.setAttribute("href", "#");
-    linkFour.textContent = "Shanghai";
-    li4.appendChild(linkFour);
-    // li4.addEventListener("click", () => {
-    // 	console.log("I'm in NavBar")
-    // })
-    navUl.appendChild(li1);
-    navUl.appendChild(li2);
-    navUl.appendChild(li3);
-    navUl.appendChild(li4);
+    const pageDiv = document.querySelector("#pageDiv");
+    pageDiv.setAttribute("class", "pageDiv");
 
-    navBar.appendChild(navUl);
-    navBarContainer.appendChild(navBar);
+// CRUD CONTAINER
+    const crudContainer = document.createElement("section");
+    crudContainer.setAttribute("id", "crudContainer");
+    let crudContainerHeader = document.createElement("h2");
+    crudContainerHeader.textContent = "The Ternary Traveler";
 //CREATING SELECT DROPDOWN FOR CHOOSING CITY
     let interestCityField = document.createElement("fieldset");
     interestCityField.setAttribute("class", "cityStyling");
     let interestCityLabel = document.createElement("label");
     interestCityLabel.textContent = "Select a City:  ";
     interestCityLabel.setAttribute("for", "interestCitySelect");
+    interestCityLabel.setAttribute("class", "label");
     let interestCitySelect = document.createElement("select");
     interestCitySelect.setAttribute("id", "interest_city");
     interestCityField.appendChild(interestCityLabel);
+// FETCH CALL TO PLACES TO POPULATE SELECT & LISTHEADERCONTAINER
 
     FetchCalls.getPlaces()
     .then(allPlaces => {
@@ -77,23 +34,18 @@ createAndAppendForm() {
         let selectOption = document.createElement("option");
         selectOption.setAttribute("label", placeItem.nameCity);
         selectOption.setAttribute("value", placeItem.id);
-        interestCitySelect.appendChild(selectOption);
-          console.log(selectOption);
+        console.log(selectOption);
       })
       interestCityField.appendChild(interestCitySelect);
     })
-// ADD SECONDARY HEADER
-    // let addHeader = document.createElement("h3");
-    // addHeader.textContent = "Points of Interest";
-    // addHeader.setAttribute("class", "headerH3");
-
-// NAME OF INTEREST
+    // NAME OF INTEREST
     let interestNameField = document.createElement("fieldset");
     interestNameField.setAttribute("class", "nameStyling");
 
     let interestNameLabel = document.createElement("label");
     interestNameLabel.textContent = "Name:  ";
     interestNameLabel.setAttribute("for", "interestNameInput");
+    interestNameLabel.setAttribute("class", "label");
     interestNameField.appendChild(interestNameLabel);
 
     let interestNameInput = document.createElement("input");
@@ -107,10 +59,12 @@ createAndAppendForm() {
     let interestDescLabel = document.createElement("label");
     interestDescLabel.textContent = "Description:  ";
     interestDescLabel.setAttribute("for", "interestDescInput");
+    interestDescLabel.setAttribute("class", "label");
 
     let interestDescInput = document.createElement("textarea");
     interestDescInput.setAttribute("id", "interest_desc");
     interestDescInput.setAttribute("name", "interestDescInput")
+    interestDescInput.setAttribute("class", "descInput");
 
     interestDescField.appendChild(interestDescLabel);
     interestDescField.appendChild(interestDescInput);
@@ -122,6 +76,7 @@ createAndAppendForm() {
     let interestCostLabel = document.createElement("label");
     interestCostLabel.textContent = "Cost:  ";
     interestCostLabel.setAttribute("for", "interestCostInput");
+    interestCostLabel.setAttribute("class", "label");
 
     let interestCostInput = document.createElement("input");
     interestCostInput.setAttribute("id", "interest_cost");
@@ -132,37 +87,44 @@ createAndAppendForm() {
 // SUBMIT BUTTON
     let submitButton = document.createElement("button");
     submitButton.textContent = "Add Point of Interest";
-    submitButton.setAttribute("class", "addBtnStyling");
+    submitButton.setAttribute("class", "btnStyling");
     submitButton.setAttribute("id", "interest__save");
     // 2. Attach event listener to button in form
     submitButton.addEventListener("click", this.handleAddNewInterest);
 
-// 3. Append the HTML form to the DOM
-    let interestFormFragment = document.createDocumentFragment();
-    // interestFormFragment.appendChild(formHeader);
-    // interestFormFragment.appendChild(addHeader);
-    interestFormFragment.appendChild(interestNameField);
-    interestFormFragment.appendChild(interestDescField);
-    interestFormFragment.appendChild(interestCostField);
-    interestFormFragment.appendChild(interestCityField);
-    interestFormFragment.appendChild(submitButton);
+// LIST OF INTERESTS CONTAINER
+    const listContainer = document.createElement("section");
+    listContainer.setAttribute("id", "listContainer");
+    const listArticleOne = document.createElement("article");
+    listArticleOne.setAttribute("id", "articleId--1");
+    const listArticleTwo = document.createElement("article");
+    listArticleTwo.setAttribute("id", "articleId--2");
+    const listArticleThree = document.createElement("article");
+    listArticleThree.setAttribute("id", "articleId--3");
+    listContainer.appendChild(listArticleOne);
+    listContainer.appendChild(listArticleTwo);
+    listContainer.appendChild(listArticleThree);
+    console.log(listContainer);
 
-    let interestFormArticle = document.querySelector("#li--1");
-    interestFormArticle.setAttribute("class", "liOne");
-    interestFormArticle.appendChild(interestFormFragment);
+// APPEND BOTH THE CRUD AND LIST CONTAINER TO THE DOM
+    let crudContainerFragment = document.createDocumentFragment();
+    crudContainerFragment.appendChild(crudContainerHeader);
+    crudContainerFragment.appendChild(interestNameField);
+    crudContainerFragment.appendChild(interestDescField);
+    crudContainerFragment.appendChild(interestCostField);
+    crudContainerFragment.appendChild(interestCityField);
+    crudContainerFragment.appendChild(submitButton);
 
-    console.log(interestFormArticle);
-    List.createDomList();
+    //   while (crudContainer.firstChild) {
+    //     crudContainer.removeChild(crudContainer.firstChild);
+    //   }
+    // crudContainer.appendChild(crudContainerFragment)
+
+    pageDiv.appendChild(crudContainer);
+    pageDiv.appendChild(listContainer);
+    console.log(pageDiv);
+    //List.createDomList();
 },
-  clearTaskDom() {
-    console.log("Hello from TasksDomBuilder.clearDom");
-    let clearHtmlDiv = document.querySelector("#pageDiv");
-    let clearHtmlSection = document.querySelector("#clearSection");
-    clearHtmlSection.innerHTML = `
-        <article id="formOutput"></article>
-        <article id="listOutput"></article>`;
-    clearHtmlDiv.appendChild(clearHtmlSection);
-    },
     handleAddNewInterest() {
 // "id": 9,
 // "nameInterest": "Interest Nine",
