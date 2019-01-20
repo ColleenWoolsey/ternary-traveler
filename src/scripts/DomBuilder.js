@@ -34,6 +34,7 @@ createAndAppendCrud() {
         let selectOption = document.createElement("option");
         selectOption.setAttribute("label", placeItem.nameCity);
         selectOption.setAttribute("value", placeItem.id);
+        interestCitySelect.appendChild(selectOption);
         console.log(selectOption);
       })
       interestCityField.appendChild(interestCitySelect);
@@ -91,22 +92,7 @@ createAndAppendCrud() {
     submitButton.setAttribute("id", "interest__save");
     // 2. Attach event listener to button in form
     submitButton.addEventListener("click", this.handleAddNewInterest);
-
-// LIST OF INTERESTS CONTAINER
-    const listContainer = document.createElement("section");
-    listContainer.setAttribute("id", "listContainer");
-    const listArticleOne = document.createElement("article");
-    listArticleOne.setAttribute("id", "articleId--1");
-    const listArticleTwo = document.createElement("article");
-    listArticleTwo.setAttribute("id", "articleId--2");
-    const listArticleThree = document.createElement("article");
-    listArticleThree.setAttribute("id", "articleId--3");
-    listContainer.appendChild(listArticleOne);
-    listContainer.appendChild(listArticleTwo);
-    listContainer.appendChild(listArticleThree);
-    console.log(listContainer);
-
-// APPEND BOTH THE CRUD AND LIST CONTAINER TO THE DOM
+    // APPEND ADD CONTAINER TO THE DOM
     let crudContainerFragment = document.createDocumentFragment();
     crudContainerFragment.appendChild(crudContainerHeader);
     crudContainerFragment.appendChild(interestNameField);
@@ -114,16 +100,12 @@ createAndAppendCrud() {
     crudContainerFragment.appendChild(interestCostField);
     crudContainerFragment.appendChild(interestCityField);
     crudContainerFragment.appendChild(submitButton);
+    crudContainer.appendChild(crudContainerFragment);
 
-    //   while (crudContainer.firstChild) {
-    //     crudContainer.removeChild(crudContainer.firstChild);
-    //   }
-    // crudContainer.appendChild(crudContainerFragment)
+    List.createDomList();
 
     pageDiv.appendChild(crudContainer);
-    pageDiv.appendChild(listContainer);
     console.log(pageDiv);
-    //List.createDomList();
 },
     handleAddNewInterest() {
 // "id": 9,
