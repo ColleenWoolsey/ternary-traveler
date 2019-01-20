@@ -1,9 +1,19 @@
 .pageDiv {
-    display: flex; 
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.editContainer {
+    text-align: center;
+    border: 15px dotted #CAEBF2;
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
 #listContainer {
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     list-style-type: none;
     border: 1px solid black;
@@ -26,7 +36,7 @@
 
 .containerFieldset {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
 .nameStyling {
@@ -63,6 +73,7 @@
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .label {
@@ -118,4 +129,8 @@
 .costList {
     margin: 0;
     margin-top: 5px;
+}
+
+.reviewLabel {
+    margin: 3px;
 }

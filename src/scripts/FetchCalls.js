@@ -1,19 +1,26 @@
 const FetchCalls = {
-
-    getPlaces() {
+// GET ONLY PLACES
+  getPlaces() {
       return fetch("http://localhost:8088/places")
       .then(response=>response.json())
     },
-
-    getInterests(cityId) {
+// GET A SINGULAR INTEREST BY INTEREST-ID
+  getInterest(interestId) {
+      return fetch(`http://localhost:8088/interests/${interestId}`)
+      .then(response => response.json())
+    },
+// GET ALL INTERESTS AND PLACES FOR A SINGULAR CITY
+  byCityInterests(cityId) {
       return fetch(`http://localhost:8088/interests?_expand=place&placeId=${cityId}`)
       .then(response => response.json())
     },
-    getAllInterestsAndPlaces() {
+// GET ALL (EXPANDED) INTERESTS AND PLACES
+  getAllInterestsAndPlaces() {
       return fetch("http://localhost:8088/interests?_expand=place")
         .then(response => response.json())
     },
-    postNewInterest(newInterestToSave) {
+// POST A NEW INTEREST
+  postNewInterest(newInterestToSave) {
       return fetch("http://localhost:8088/interests", {
         method: "POST",
         headers: {
@@ -22,13 +29,15 @@ const FetchCalls = {
         body: JSON.stringify(newInterestToSave)
       })
     },
-    getInterest(interestId) {
+// GET ONE INTEREST (TO DELETE)
+  deleteInterest(interestId) {
       return fetch(`http://localhost:8088/interests/${interestId}`)
       .then(response => response.json())
     },
-    putExistingTask(interestId, interestToEdit) {
+// GET SINGULAR INTEREST - EDIT AND RETURN
+  patchExistingInterest(interestId, interestToEdit) {
       return fetch(`http://localhost:8088/interests/${interestId}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },

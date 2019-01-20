@@ -14,6 +14,9 @@ const listArticleTwo = document.createElement("article");
 listArticleTwo.setAttribute("id", "articleId--2");
 const listArticleThree = document.createElement("article");
 listArticleThree.setAttribute("id", "articleId--3");
+const InterestsDocFragment1 = document.createDocumentFragment();
+const InterestsDocFragment2 = document.createDocumentFragment();
+const InterestsDocFragment3 = document.createDocumentFragment();
 
    FetchCalls.getPlaces()
     .then(allPlaces => {
@@ -21,30 +24,38 @@ listArticleThree.setAttribute("id", "articleId--3");
       allPlaces.forEach(placeItem => {
         // fetch list for just that city
         const cityId = placeItem.id;
-        FetchCalls.getInterests(cityId)
+        FetchCalls.byCityInterests(cityId)
         .then(allInterests => {
-          console.log(allInterests);
+          //console.log(allInterests);
           allInterests.forEach(interestItem => {
             let interestHtml = CreateObject.interestBuilder(interestItem);
             console.log(interestHtml);
             if (interestItem.place.id === 1) {
             listArticleOne.appendChild(interestHtml);
-            listContainer.appendChild(listArticleOne);
+            InterestsDocFragment1.appendChild(interestHtml);
           } else if (interestItem.place.id === 2) {
             listArticleTwo.appendChild(interestHtml);
-            listContainer.appendChild(listArticleTwo);
+            InterestsDocFragment2.appendChild(interestHtml);
           } else if (interestItem.place.id === 3) {
             listArticleThree.appendChild(interestHtml);
-            listContainer.appendChild(listArticleThree);
+            InterestsDocFragment3.appendChild(interestHtml);
           } else {
             alert("There are no interests for this city")
           }
-          pageDiv.appendChild(listContainer);
-          console.log(listContainer);
         })
-       })
-     })
+        listArticleOne.appendChild(InterestsDocFragment1);
+        listArticleTwo.appendChild(InterestsDocFragment2);
+        listArticleThree.appendChild(InterestsDocFragment3);
+
+        listContainer.appendChild(listArticleOne);
+        listContainer.appendChild(listArticleTwo);
+        listContainer.appendChild(listArticleThree);
+        let pageDiv = document.querySelector("#pageDiv");
+        pageDiv.appendChild(listContainer);
+        console.log(listContainer);
+      })
     })
+   })
   }
 }
 export default List
