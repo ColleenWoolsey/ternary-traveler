@@ -50,9 +50,14 @@ const InterestsDocFragment3 = document.createDocumentFragment();
         listContainer.appendChild(listArticleOne);
         listContainer.appendChild(listArticleTwo);
         listContainer.appendChild(listArticleThree);
-        let pageDiv = document.querySelector("#pageDiv");
-        pageDiv.appendChild(listContainer);
-        console.log(listContainer);
+
+        let outputArticle = document.querySelector("#output")
+
+      while (outputArticle.firstChild) {
+        outputArticle.removeChild(outputArticle.firstChild);
+      }
+        outputArticle.appendChild(listContainer);
+        console.log(outputArticle);
       })
     })
    })

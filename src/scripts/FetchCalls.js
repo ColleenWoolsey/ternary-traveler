@@ -4,7 +4,7 @@ const FetchCalls = {
       return fetch("http://localhost:8088/places")
       .then(response=>response.json())
     },
-// GET A SINGULAR INTEREST BY INTEREST-ID
+// GET A SINGULAR INTEREST BY INTEREST-ID (FOR EDIT)
   getInterest(interestId) {
       return fetch(`http://localhost:8088/interests/${interestId}`)
       .then(response => response.json())
@@ -29,12 +29,7 @@ const FetchCalls = {
         body: JSON.stringify(newInterestToSave)
       })
     },
-// GET ONE INTEREST (TO DELETE)
-  deleteInterest(interestId) {
-      return fetch(`http://localhost:8088/interests/${interestId}`)
-      .then(response => response.json())
-    },
-// GET SINGULAR INTEREST - EDIT AND RETURN
+// UPDATE
   patchExistingInterest(interestId, interestToEdit) {
       return fetch(`http://localhost:8088/interests/${interestId}`, {
         method: "PATCH",
@@ -43,6 +38,15 @@ const FetchCalls = {
         },
         body: JSON.stringify(interestToEdit)
       })
-    }
+    },
+  // DELETE
+  deleteInterest(interestId) {
+    return fetch(`http://localhost:8088/interests/${interestId}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
+        }
+    })
   }
+}
   export default FetchCalls

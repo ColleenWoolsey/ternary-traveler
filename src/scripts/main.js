@@ -1,5 +1,5 @@
 import DomBuilder from "./Dombuilder"
-//import List from "./List"
+import List from "./List"
 
 DomBuilder.createAndAppendCrud();
-//List.createDomList();
+List.createDomList();
