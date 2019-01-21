@@ -36,11 +36,15 @@ const CreateObject = {
 // CONFIRMATION ALERT FOR DELETE
       let confirmationValue = confirm("Are you sure you want to delete this place?")
       if (confirmationValue == true) {
+          // Target the parentnode because event is on article not button
           let articleId = event.target.parentNode.id;
+          // Pass in the articleId (word + number) in EditForm.createAndAppend
           let interestId = articleId.split("--")[1]
+          // The split variable contains only the number
           FetchCalls.deleteInterest(interestId)
           .then(response => {
-            console.log(response)
+            console.log(response);
+
             List.createDomList();
           })
         } else {

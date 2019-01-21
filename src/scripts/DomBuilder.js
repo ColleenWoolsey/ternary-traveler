@@ -126,6 +126,9 @@ handleAddNewInterest() {
     console.log("newInterest Object");
     console.log(newInterest);
 
+    // Have acces to the placeId because add function is within scope
+    // ofDomBuilder so don't have to use articleId
+
     FetchCalls.postNewInterest(newInterest)
     .then(response => {
         console.log("You have fetched");
