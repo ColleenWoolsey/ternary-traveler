@@ -4,6 +4,7 @@ import List from "./List";
 
 const CreateObject = {
   interestBuilder(interestItem) {
+    console.log("Hello from CreateObject.interestBuilder")
 // CREATING ITEM LIST CONTAINER FOR EACH INTEREST ITEM
     let interestArticle = document.createElement("article");
     interestArticle.setAttribute("id", `interest--${interestItem.id}`);
@@ -17,11 +18,13 @@ const CreateObject = {
     editBtn.addEventListener("click", () => {
       let articleId = event.target.parentNode.id;
       let interestId = articleId.split("--")[1];
+      console.log("This is the id from interests for fetch")
       console.log(interestId);
       FetchCalls.getInterest(interestId)
       .then(response => {
-        console.log(response)
-        EditForm.createAndAppendForm(articleId, response)
+          console.log("This is the response from edit fetch to be used in EditForm")
+          console.log(response)
+          EditForm.createAndAppendForm(articleId, response);
       })
     })
 // CREATING DELETE BUTTON
@@ -30,6 +33,7 @@ const CreateObject = {
     delBtn.textContent = "Delete";
 // ADDING EVENT LISTENER TO DELETE BUTTON
     delBtn.addEventListener("click", () => {
+// CONFIRMATION ALERT FOR DELETE
       let confirmationValue = confirm("Are you sure you want to delete this place?")
       if (confirmationValue == true) {
           let articleId = event.target.parentNode.id;
@@ -37,7 +41,7 @@ const CreateObject = {
           FetchCalls.deleteInterest(interestId)
           .then(response => {
             console.log(response)
-            List.createAndAppendForm();
+            List.createDomList();
           })
         } else {
           return false
@@ -51,7 +55,6 @@ const CreateObject = {
     let vnameCity = document.createElement("p");
     vnameCity.setAttribute("class", "header");
     vnameCity.textContent = interestItem.place.nameCity;
-    console.log(vnameCity);
 
     let vdescriptionInterest = document.createElement("textarea");
     vdescriptionInterest.textContent = interestItem.descriptionInterest;
@@ -65,17 +68,8 @@ const CreateObject = {
     vreviewLabel.setAttribute("class", "reviewLabel");
     vreviewLabel.textContent = "Review";
     let vreview = document.createElement("textarea");
-    vreview.setAttribute("rows", "7");
+    vreview.setAttribute("rows", "6");
     vreview.textContent = interestItem.reviewInterest;
-// SAMPLE OBJECT FOR REFERENCE
-    // {
-    // "id": 1,
-    // "placeId": 1,
-    // "nameInterest": "Local Market",
-    // "descriptionInterest": "Local market where you can try purchase local products and try the local food",
-    // "costInterest": 0.00,
-    // "reviewInterest": "You can definitely get things for a lower price if you are willing to bargain!"
-    // }
 // APPENDING LIST ITEM
   interestArticle.appendChild(vnameCity);
   interestArticle.appendChild(vnameInterest);

@@ -4,11 +4,9 @@ import List from "./List"
 const DomBuilder = {
   createAndAppendCrud() {
     console.log("Hello from Dombuilder.createAndAppendForm");
-// SELECTING ROOT
-    const pageDiv = document.querySelector("#pageDiv");
-    pageDiv.setAttribute("class", "pageDiv");
+
 // CRUD CONTAINER
-    const crudContainer = document.createElement("section");
+    let crudContainer = document.createElement("section");
     crudContainer.setAttribute("id", "crudContainer");
     let crudContainerHeader = document.createElement("h2");
     crudContainerHeader.textContent = "The Ternary Traveler";
@@ -25,17 +23,18 @@ const DomBuilder = {
 // FETCH CALL TO PLACES TO POPULATE SELECT OPTIONS
     FetchCalls.getPlaces()
         .then(allPlaces => {
-        console.log(allPlaces);
-        allPlaces.forEach(placeItem => {
-        let selectOption = document.createElement("option");
-        // OR selectOption.textContent += `${placeItem.nameCity}`???
-        selectOption.setAttribute("label", placeItem.nameCity);
-        selectOption.setAttribute("value", placeItem.id);
-        interestCitySelect.appendChild(selectOption);
-        console.log(selectOption);
-      })
+            console.log(allPlaces);
+            allPlaces.forEach(placeItem => {
+                let selectOption = document.createElement("option");
+                // OR selectOption.textContent += `${placeItem.nameCity}`???
+                selectOption.setAttribute("label", placeItem.nameCity);
+                selectOption.setAttribute("value", placeItem.id);
+                interestCitySelect.appendChild(selectOption);
+                console.log("This is selct option")
+                console.log(selectOption);
+            })
       interestCityField.appendChild(interestCitySelect);
-    })
+        })
 // NAME OF INTEREST
     let interestNameField = document.createElement("fieldset");
     interestNameField.setAttribute("class", "nameStyling");
@@ -95,11 +94,10 @@ const DomBuilder = {
     crudContainerFragment.appendChild(interestCostField);
     crudContainerFragment.appendChild(interestCityField);
     crudContainerFragment.appendChild(submitButton);
-    crudContainer.appendChild(crudContainerFragment);
 
-    pageDiv.appendChild(crudContainer);
-    console.log(pageDiv);
-    List.createDomList();
+    crudContainer.appendChild(crudContainerFragment);
+    let outputArticle = document.querySelector("#form");
+    outputArticle.appendChild(crudContainer);
 },
 
 handleAddNewInterest() {
@@ -125,12 +123,12 @@ handleAddNewInterest() {
       placeId: intPlaceInput
     }
 
-    console.log("newInterest Object")
-    console.log(newInterest)
+    console.log("newInterest Object");
+    console.log(newInterest);
 
     FetchCalls.postNewInterest(newInterest)
     .then(response => {
-        console.log("You have fetched")
+        console.log("You have fetched");
         List.createDomList();
         DomBuilder.clearForm();
     })
@@ -139,6 +137,7 @@ handleAddNewInterest() {
     document.querySelector("#interest__name").value = "";
     document.querySelector("#interest__desc").value = "";
     document.querySelector("#interest__cost").value = "";
+    document.querySelector("#interest__city").value = "";
   }
 }
 export default DomBuilder

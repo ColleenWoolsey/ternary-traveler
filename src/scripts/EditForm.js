@@ -1,16 +1,29 @@
 import FetchCalls from "./FetchCalls"
-import List from "./List"
+import List from "./List";
 
-const interestEditForm = {
   // This module will build an edit form and append it to the DOM.
   // The form will contain input fields with existing values from
   // the API and an Update button. The user can edit the the values
   // in the input fields. An event listener on the Update button
   // will handle taking the new values entered by the user and
   // calling the API to update the data.
-  createAndAppendForm (articleId, interestObjToEdit) {
+
+  const EditForm = {
+      createAndAppendForm (articleId, interestObjToEdit) {
+      console.log("Hello from EditForm.interestEdit Form")
+      console.log(interestObjToEdit);
+// NAME
+    let interestNameField = document.createElement("fieldset");
+    interestNameField.setAttribute("class", "nameStyling");
+
+    let interestNameLabel = document.createElement("p");
+    interestNameLabel.textContent = interestObjToEdit.nameInterest;
+    //interestNameLabel.setAttribute("class", "label");
+
+    interestNameField.appendChild(interestNameLabel);
 // COST
     let interestCostField = document.createElement("fieldset");
+    interestCostField.setAttribute("class", "costStyling");
 
     let interestCostLabel = document.createElement("label");
     interestCostLabel.textContent = "Cost:  ";
@@ -18,7 +31,7 @@ const interestEditForm = {
     interestCostLabel.setAttribute("class", "label");
 
     let interestCostInput = document.createElement("input");
-    interestCostInput.value = interestObjToEdit.cost;
+    interestCostInput.value = interestObjToEdit.costInterest;
     interestCostInput.setAttribute("id", "interest__cost");
 
     interestCostField.appendChild(interestCostLabel);
@@ -31,10 +44,10 @@ const interestEditForm = {
     interestReviewLabel.setAttribute("for", "interest__review");
 
     let interestReviewInput = document.createElement("textarea");
-    interestReviewInput.value = interestObjToEdit.review;
+    interestReviewInput.value = interestObjToEdit.reviewInterest;
     interestReviewInput.setAttribute("id", "interest__review");
     interestReviewInput.setAttribute("rows", "10");
-    interestReviewInput.setAttribute("cols", "50");
+    interestReviewInput.setAttribute("cols", "30");
     interestReviewInput.setAttribute("name", "interestReviewInput");
 
     interestReviewField.appendChild(interestReviewLabel);
@@ -55,20 +68,23 @@ const interestEditForm = {
     // items and display them.
     updateButton.addEventListener("click", () => {
       let editedInterest = {
-        cost: interestCostInput.value,
-        review: interestReviewInput.value
+        costInterest: interestCostInput.value,
+        reviewInterest: interestReviewInput.value
       }
+      console.log("edited interest object")
       console.log(editedInterest);
-      FetchCalls.editExistingInterest(interestObjToEdit.id, editedInterest)
+      FetchCalls.patchExistingInterest(interestObjToEdit.id, editedInterest)
       .then(response => {
-        List.createDomList();
+          List.createDomList();
       })
     })
 
     // We passed in the id of the article so we know exactly where to
     // append the edit form.
     let interestArticle = document.querySelector(`#${articleId}`);
-    interestArticle.setAttribute("class", "editContainer")
+    interestArticle.setAttribute("class", "editContainer");
+    console.log("This is interestArticle");
+    console.log(interestArticle);
     // Because we want to replace what is currently in the article
     // element with the edit form, we clear out all children HTML
     // elements in our targeted element before appending our edit
@@ -76,10 +92,11 @@ const interestEditForm = {
     while (interestArticle.firstChild) {
       interestArticle.removeChild(interestArticle.firstChild);
     }
+    interestArticle.appendChild(interestNameField);
     interestArticle.appendChild(interestCostField);
     interestArticle.appendChild(interestReviewField);
     interestArticle.appendChild(updateButton);
   }
 }
 
-export default interestEditForm
+export default EditForm
