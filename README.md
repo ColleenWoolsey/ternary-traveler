@@ -3,47 +3,100 @@ SEE USER REQUIREMENTS BELOW
 STEP BY STEP BREAKDOWN OF HOW PROJECT REQUIREMENTS WILL BE ACCOMPLISHED
 
 Meet Technical Requirements:
-Create directory and file structure and initialize a git repo
-Set up Grunt to run ESLint and Browserify during development and use json-server for persistandt data storage
 
-1. Create points of interest array object
+Create directory and file structure and initialize a git repo
+
+Set up Grunt to run ESLint and Browserify during development and use json-server for persistent data storage
+
+1. Create points of interest array object in database.json
+
 2. DomBuilder component:
+
   - Create a container section with two articles - add form and list output
-  - DomBuilder.createAndAppendCrud will create elements and append them.
+  
+  - DomBuilder.createAndAppendCrud will create elements and append them
+  
     When the user opens the application, a form will be presented in which
     the following properties of the point of interest are provided
-      A. Name of the Point Of Interest - POI (A fielset of label and input)
+    
+      A. Name of the Point Of Interest - POI (A fieldset of label and input)
+      
       B. Description of the POI (A fieldset of label and textarea)
+      
       C. Cost of visiting the POI (A fieldset of label and input)
-      D. Dropdown to pick which city the POI is located in (Fieldset and          Select with options populated by a fetch to places array containing      the  three static cities assigned)
-      E. Button with click event listener to add POI and display the new POI      in the application after it's added
+      
+      D. Dropdown to pick which city the POI is located in (Fieldset and
+      Select with options populated by a fetch to places array containing
+      the  three static cities assigned)
+      
+      E. Button with click event listener to add POI and display the new POI
+      in the application after it's added.
+      
   - The Add POI Button will call domBuilder.handleAddNewInterest and:
+  
       A. Create a new Interest object
+      
       B. Select the input values and asign them to the object
+      
       C. Fetch the interests array and POST to it
+      
       D. Refresh the list of points of interest
+      
       E. Clear the input form
+      
 3. In addition to the add form, when the user opens the application,
-    - All POI objects will be displayed with their city, name, description, cost, review (if it's not blank) and options to both edit and delete the POI - 
+
+    - All POI objects will be displayed with their
+          city
+          name
+          description
+          cost
+          review (if it's not blank)
+          options to both edit and delete the POI
+          
     - List.createDomList calls createObject.interestbuilder to create the singular object to be displayed
-    - It then adds each POI object to the list output container section. Within the output section are three articles relative to the three static cities in the places array so POI can be displayed by city.
+    
+    - It then adds each POI object to the list output container section
+    Within the output section are three articles relative to the three static cities in the places array
+    
+    For POI to be displayed by city:
+    
       A. Create list container and 4 subsets
+      
       B. Fetch for one city by Id
-      C. Create a docFragment calling component createObject.interestBuilder
+      
+      C. Create a docFragment
+      
       D. For each city (placeId) fetch POI
+      
       E. Add POI item to docFragment
+      
       F. Add docFragment to container
+      
       G. Repeat for other two cities
+      
 4. The edit button created in createObject.interestBuilder:
+
       A. Calls EditForm.js
+      
       B. Which creates a form with:
+      
            POI name (for easy reference)
+           
            Pre-filled input fields to update cost and review
+           
            An update button to save changes
+           
       C. Redisplays the POI list reflecting the update.
-5. When the delete button created in createObject.interestBuilder is clicked,        A. The user is prompted to confirm the delete.
-      B. If confirmed, FetchCalls.deleteInterest is called for that interest      Id and the object is deleted from the interests array
+      
+5. When the delete button created in createObject.interestBuilder is clicked:
+
+      A. The user is prompted to confirm the delete.
+      
+      B. If confirmed, FetchCalls.deleteInterest is called for that interest Id and the object is deleted from the interests array
+      
       C. The list of POI is refreshed.
+      
       D. If the user elects not to delete, the POI is not deleted and the confirmation message disappears.
   
   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
