@@ -79,19 +79,18 @@ import List from "./List";
       })
     })
 
-    // We passed in the id of the article so we know exactly where to
+    // Passed in the id of the article so know exactly where to
     // append the edit form.
     let interestArticle = document.querySelector(`#${articleId}`);
     interestArticle.setAttribute("class", "editContainer");
     console.log("This is interestArticle");
     console.log(interestArticle);
-    // Because we want to replace what is currently in the article
-    // element with the edit form, we clear out all children HTML
-    // elements in our targeted element before appending our edit
-    // form to it.
     while (interestArticle.firstChild) {
       interestArticle.removeChild(interestArticle.firstChild);
     }
+    // Before appending edit form to targeted element -
+    // Do while - As long as article tag has any children, delete the first one.
+    // At the end have empty tag - Same as using innerHTML = ""
     interestArticle.appendChild(interestNameField);
     interestArticle.appendChild(interestCostField);
     interestArticle.appendChild(interestReviewField);
