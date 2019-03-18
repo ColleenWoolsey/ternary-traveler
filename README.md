@@ -1,6 +1,8 @@
-SEE USER REQUIREMENTS BELOW
+The Ternary Traveler is a CRUD application for a travel blogger who travels to 3 destinations per month. It adds points of interest for the next set of places she’ll be visiting. When the memories are made, she adjusts the cost and adds a review. 
+She requested a Browserify application using JSON-Server, written in JavaScript with modules. Writing this app in a 3 day sprint reminded me of the first time I took the car out for a spin on my own after becoming a licensed driver … Sweet spot!  I’m looking forward to seeing where REACT takes me next!
 
-STEP BY STEP BREAKDOWN OF HOW PROJECT REQUIREMENTS WILL BE ACCOMPLISHED
+
+MY STEP BY STEP BREAKDOWN OF HOW PROJECT REQUIREMENTS WILL BE ACCOMPLISHED
 
 Meet Technical Requirements:
 
@@ -101,8 +103,7 @@ Set up Grunt to run ESLint and Browserify during development and use json-server
   
   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-The Ternary Traveler
-
+CLIENT objectives for The Ternary Traveler
 
 You've been asked to put together a simple application for your client, Mira. Mira is a travel blogger who creates both videos and writes blog posts for her website. She tries to travel to three destinations per month, spending a week in each place. Then she takes a week off before starting the whole cycle again. She has requested a Browserify application using JSON-Server, where she can add points of interests for the next set of three places she will be visiting. She would like to be able to add a new point of interest in one of her destinations so she can have a list of places she needs to visit when she travels. As she visits each point of interest, she would like to be able to edit the point of interest by adjusting the cost and adding a review. She has also asked to be able to delete points of interest from her list. But to ensure she does not accidentally delete anything, she would like an alert to to confirm the delete action.
 
