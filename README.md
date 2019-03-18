@@ -1,4 +1,4 @@
-![Main Page](/src/EmoLocation.png?raw=true)
+![Main Page](/src/Traveler.png?raw=true)
 
 The Ternary Traveler is a CRUD application for a travel blogger who travels to 3 destinations per month. It adds points of interest for the next set of places she’ll be visiting. When the memories are made, she adjusts the cost and adds a review.
 
