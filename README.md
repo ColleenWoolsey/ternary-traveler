@@ -1,4 +1,7 @@
-The Ternary Traveler is a CRUD application for a travel blogger who travels to 3 destinations per month. It adds points of interest for the next set of places she’ll be visiting. When the memories are made, she adjusts the cost and adds a review. 
+![Main Page](/src/EmoLocation.png?raw=true)
+
+The Ternary Traveler is a CRUD application for a travel blogger who travels to 3 destinations per month. It adds points of interest for the next set of places she’ll be visiting. When the memories are made, she adjusts the cost and adds a review.
+
 She requested a Browserify application using JSON-Server, written in JavaScript with modules. Writing this app in a 3 day sprint reminded me of the first time I took the car out for a spin on my own after becoming a licensed driver … Sweet spot!  I’m looking forward to seeing where REACT takes me next!
 
 
